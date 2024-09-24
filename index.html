@@ -90,21 +90,8 @@
     </style>
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
-  <script type="application/ld+json">{"@context":"http://schema.org/","@type":"3DModel","name":"office0_instance","encoding":[{"@type":"MediaObject","contentUrl":"./static/3dModel/office_0_instance_colored_scene.glb","encodingFormat":"model/gltf-binary"}]}</script>
-  <script type="application/ld+json">{"@context":"http://schema.org/","@type":"3DModel","name":"office0_partfeat","encoding":[{"@type":"MediaObject","contentUrl":"./static/3dModel/office_0_partfeat_colored_scene.glb","encodingFormat":"model/gltf-binary"}]}</script>
-  <script type="application/ld+json">{"@context":"http://schema.org/","@type":"3DModel","name":"office0_rgb","encoding":[{"@type":"MediaObject","contentUrl":"./static/3dModel/office_0_rgb_colored_scene.glb","encodingFormat":"model/gltf-binary"}]}</script>
-  <script type="application/ld+json">{"@context":"http://schema.org/","@type":"3DModel","name":"office0_semantic","encoding":[{"@type":"MediaObject","contentUrl":"./static/3dModel/office_0_semantic_colored_scene.glb","encodingFormat":"model/gltf-binary"}]}</script>
-  <script type="application/ld+json">{"@context":"http://schema.org/","@type":"3DModel","name":"office3_instance","encoding":[{"@type":"MediaObject","contentUrl":"./static/3dModel/office_3_instance_colored_scene.glb","encodingFormat":"model/gltf-binary"}]}</script>
-  <script type="application/ld+json">{"@context":"http://schema.org/","@type":"3DModel","name":"office3_partfeat","encoding":[{"@type":"MediaObject","contentUrl":"./static/3dModel/office_3_partfeat_colored_scene.glb","encodingFormat":"model/gltf-binary"}]}</script>
-  <script type="application/ld+json">{"@context":"http://schema.org/","@type":"3DModel","name":"office3_rgb","encoding":[{"@type":"MediaObject","contentUrl":"./static/3dModel/office_3_rgb_colored_scene.glb","encodingFormat":"model/gltf-binary"}]}</script>
-  <script type="application/ld+json">{"@context":"http://schema.org/","@type":"3DModel","name":"office3_semantic","encoding":[{"@type":"MediaObject","contentUrl":"./static/3dModel/office_3_semantic_colored_scene.glb","encodingFormat":"model/gltf-binary"}]}</script>
-  <script type="application/ld+json">{"@context":"http://schema.org/","@type":"3DModel","name":"room0_instance","encoding":[{"@type":"MediaObject","contentUrl":"./static/3dModel/room_0_instance_colored_scene.glb","encodingFormat":"model/gltf-binary"}]}</script>
-  <script type="application/ld+json">{"@context":"http://schema.org/","@type":"3DModel","name":"room0_partfeat","encoding":[{"@type":"MediaObject","contentUrl":"./static/3dModel/room_0_partfeat_colored_scene.glb","encodingFormat":"model/gltf-binary"}]}</script>
-  <script type="application/ld+json">{"@context":"http://schema.org/","@type":"3DModel","name":"room0_rgb","encoding":[{"@type":"MediaObject","contentUrl":"./static/3dModel/room_0_rgb_colored_scene.glb","encodingFormat":"model/gltf-binary"}]}</script>
-  <script type="application/ld+json">{"@context":"http://schema.org/","@type":"3DModel","name":"room0_semantic","encoding":[{"@type":"MediaObject","contentUrl":"./static/3dModel/room_0_semantic_colored_scene.glb","encodingFormat":"model/gltf-binary"}]}</script>
 </head>
 <body>
-
 
 
 <section class="hero">
@@ -193,6 +180,13 @@
         .title.is-3 {
           text-align: center;
         }
+        #teaser {
+          max-width: 100%;  
+          height: auto;     
+          display: block;   
+          margin-left: auto;
+          margin-right: auto;
+        }
       </style>
       <h2 class="title is-3">Poster</h2>
       <img id="teaser" src="./static/images/poster.png" alt="teaser">
@@ -258,7 +252,6 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-
     <div class="columns is-centered">
       <!-- Animation. -->
       <div class="columns is-centered">
@@ -302,20 +295,20 @@
         <!--/ Re-rendering. -->
 
         <h3 class="title is-4">Real-World Validation</h3>
-
-          <div class="columns is-centered">
-            <!-- Wheel -->
-            <div class="column">
-              <div class="content" center="">
-                <h4 class="title is-5 has-text-centered">Instance</h4>
-              </div>
+          <!-- the first video -->
+          <div style="display: flex; justify-content: space-around; padding: 20px;">
+            <div>
+              <video id="teaser1" autoplay muted loop playsinline width="100%" height="auto">
+                <source src="./static/videos/actual1.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
             </div>
-      
-            <!-- Wheel -->
-            <div class="column">
-              <div class="content" center="">
-                <h4 class="title is-5 has-text-centered">Partfeat</h4>
-              </div>
+          <!-- the second video -->
+            <div>
+              <video id="teaser2" autoplay muted loop playsinline width="100%" height="auto">
+                <source src="./static/videos/actual2.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
             </div>
           </div>
       </div>
@@ -334,8 +327,8 @@
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>@article{deng2024openobj,
-      title={OpenObj: Open-Vocabulary Object-Level Neural Radiance Fields with Fine-Grained Understanding}, 
-      author={Deng, Yinan and Wang, Jiahui and Zhao, Jingyu and Dou, Jianyu and Yang, Yi and Yue, Yufeng},
+      title={OpenObject-NAV: Open-Vocabulary Object-Oriented Navigation Based on Dynamic Carrier-Relationship Scene Graph}, 
+      author={Tang,Yujie and Wang,Meiling and Deng,Yinan and Zheng,Zibo and Zhong,Jiagui and Yue,Yufeng},
       journal={arXiv preprint arXiv:2406.08009},
       year={2024}
     }</code></pre>
