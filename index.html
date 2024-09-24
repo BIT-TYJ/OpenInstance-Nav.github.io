@@ -5,9 +5,9 @@
   <meta charset="utf-8">
   <meta name="description"
         content="OpenObject-NAV: Open-Vocabulary Object-Oriented Navigation Based on Dynamic Carrier-Relationship Scene Graph.">
-  <meta name="keywords" content="OpenObj,  Open-Vocabulary, NeRF">
+  <meta name="keywords" content="OpenObject-NAV,  Open-Vocabulary, CRSG">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>OpenObj</title>
+  <title>OpenObject-NAV</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -195,25 +195,11 @@
         }
       </style>
       <h2 class="title is-3">Poster</h2>
-      <img id="teaser" src="./static/images/poster.jpg" alt="teaser">
+      <img id="teaser" src="./static/images/poster.png" alt="teaser">
       <h2 class="subtitle has-text-centered">
-        <span class="dnerf"> OpenObj facilitates various downstream tasks. </span>
+        <span class="dnerf"> "Point to Point" represents the shortest path navigation. </span>
       </h2>
     </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">Video</h2>
-          <div class="publication-video">
-            <iframe src="https://www.youtube.com/embed/BeUdxrjItDE?si=xM9mUG0Zw5sTU4g1"
-                    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
   </div>
 </section>
 
@@ -225,20 +211,20 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p style="text-indent: 2em;">
-            In recent years, there has been a surge of interest in open-vocabulary 3D scene reconstruction 
-            facilitated by visual language models (VLMs), which showcase remarkable capabilities in open-set 
-            retrieval. However, existing methods face some limitations: they either focus on learning point-wise 
-            features, resulting in blurry semantic understanding, or solely tackle object-level reconstruction, 
-            thereby overlooking the intricate details of the object's interior.
-            To address these challenges, we introduce OpenObj, an innovative approach to build open-vocabulary 
-            object-level Neural Radiance Fields (NeRF) with fine-grained understanding. In essence, OpenObj 
-            establishes a robust framework for efficient and watertight scene modeling and comprehension at 
-            the object-level. Moreover, we incorporate part-level features into the neural fields, enabling a 
-            nuanced representation of object interiors. This approach clearly captures object-level instances 
-            while maintaining a fine-grained understanding.
-            The results on multiple datasets demonstrate that OpenObj achieves superior performance in zero-shot 
-            semantic segmentation and retrieval tasks. Additionally, OpenObj supports real-world robotics tasks 
-            at multiple scales, including global mobility and local manipulation.
+            In everyday life, frequently used objects like cups often have unfixed positions and multiple 
+            instances within the same category, and their carriers frequently change as well. As a result, 
+            it becomes challenging for a robot to efficiently navigate to a specific instance. To tackle this 
+            challenge, the robot must capture and update scene changes and plans continuously. However, 
+            current object navigation approaches primarily focus on semantic-level and lack the ability to 
+            dynamically update scene representation.  This paper captures the relationships between frequently 
+            used objects and their static carriers. It constructs an open-vocabulary Carrier-Relationship Scene 
+            Graph (CRSG) and updates the carrying status during robot navigation to reflect the dynamic changes 
+            of the scene. Based on the CRSG, we further propose an instance navigation strategy that models the 
+            navigation process as a Markov Decision Process. At each step, decisions are informed by Large Language 
+            Model's commonsense knowledge and visual-language feature similarity. We designed a series of 
+            long-sequence navigation tasks for frequently used everyday items in the Habitat simulator. The results 
+            demonstrate that by updating the CRSG, the robot can efficiently navigate to moved targets. Additionally, 
+            we deployed our algorithm on a real robot and validated its practical effectiveness. 
           </p>
         </div>
       </div>
@@ -258,17 +244,14 @@
       <h2 class="title is-3">Framework</h2>
       <div class="content has-text-justified">
         <p style="text-indent: 2em;">
-        First, the Object Segmentation and Understanding module identifies and 
-        comprehends object instances from color images. Then, Mask Clustering module 
-        ensures consistent object association across frames. Next, the Part-level Fine-Grained 
-        Feature Extraction module leverages the dense segmentation capability of 
-        SAM to distinguish parts and extracts their visual features using VLMs. Finally,
-         the NeRF Rendering and Training module vectorizes the training of NeRFs for all 
-         objects based on the masks, input RGBD images, and dense VLM features, enabling it 
-         to learn detailed object properties.
+          The OpenObject-NAV system framework consists of two main modules. The Scene Graph 
+          Construction module focuses on constructing the carrier-relationship scene graph. 
+          The Graph Updating and Navigation Strategy module is responsible for executing cognitive 
+          navigation based on user instructions, following the proposed navigation strategy, 
+          while updating the scene graph in the process.
         </p>
       </div>
-      <img id="teaser" src="./static/images/framework.jpg" alt="teaser">
+      <img id="teaser" src="./static/images/framework.png" alt="teaser">
     </div>
   </div>
 </section>
@@ -283,84 +266,12 @@
         <h2 class="title is-3">Results</h2>
 
         <!-- Interpolating. -->
-        <h3 class="title is-4">2D Zero-shot Semantic Segmentation</h3>
-          <!-- <div class="large-8 columns"> -->
-          <div style="display: flex;">
-            <div class="twentytwenty-container twentytwenty-compare-4" style="width:35%">
-              <img src="./static/images/2D_seg/office_3_3dovs.png" alt="3D-OVS"/>
-              <img src="./static/images/2D_seg/office_3_lerf.png" alt="LERF"/>
-              <img src="./static/images/2D_seg/office_3_lseg.png" alt="LSEG"/>
-              <img src="./static/images/2D_seg/office_3_our.png" alt="Ours"/>
-            </div>
-            <div class="twentytwenty-container twentytwenty-compare-4" style="width:35%">
-              <img src="./static/images/2D_seg/room_0_3dovs.png" alt="3D-OVS"/>
-              <img src="./static/images/2D_seg/room_0_lerf.png" alt="LERF"/>
-              <img src="./static/images/2D_seg/room_0_lseg.png" alt="LSEG"/>
-              <img src="./static/images/2D_seg/room_0_our.png" alt="Ours"/>
-            </div>
-            
-          </div>
-          <div style="display: flex;">
-            <div class="twentytwenty-container twentytwenty-compare-1" style="width:35%">
-              <img src="./static/images/2D_seg/office_3_gt.png" alt="gt"/>
-            </div>
-            <div class="twentytwenty-container twentytwenty-compare-1" style="width:35%">
-              <img src="./static/images/2D_seg/room_0_gt.png" alt="gt"/>
-            </div>
-          </div>
-          <div class="columns is-centered">
-            <!-- Wheel -->
-            <div class="column">
-              <div class="content" center="">
-                <h2 class="title is-5 has-text-centered">Office-3</h2>
-              </div>
-            </div>
-      
-            <!-- Wheel -->
-            <div class="column">
-              <div class="content" center="">
-                <h2 class="title is-5 has-text-centered">Room-0</h2>
-              </div>
-            </div>
-          </div>
-          <div style="display: flex;">
-            <div class="twentytwenty-container twentytwenty-compare-4" style="width:35%">
-              <img src="./static/images/2D_seg/room_1_3dovs.png" alt="3D-OVS"/>
-              <img src="./static/images/2D_seg/room_1_lerf.png" alt="LERF"/>
-              <img src="./static/images/2D_seg/room_1_lseg.png" alt="LSEG"/>
-              <img src="./static/images/2D_seg/room_1_our.png" alt="Ours"/>
-            </div>
-            <div class="twentytwenty-container twentytwenty-compare-4" style="width:35%">
-              <img src="./static/images/2D_seg/room_2_3dovs.png" alt="3D-OVS"/>
-              <img src="./static/images/2D_seg/room_2_lerf.png" alt="LERF"/>
-              <img src="./static/images/2D_seg/room_2_lseg.png" alt="LSEG"/>
-              <img src="./static/images/2D_seg/room_2_our.png" alt="Ours"/>
-            </div>
-          </div>
-          <div style="display: flex;">
-            <div class="twentytwenty-container twentytwenty-compare-1" style="width:35%">
-              <img src="./static/images/2D_seg/room_1_gt.png" alt="gt"/>
-            </div>
-            <div class="twentytwenty-container twentytwenty-compare-1" style="width:35%">
-              <img src="./static/images/2D_seg/room_2_gt.png" alt="gt"/>
-            </div>
-          </div>
-          <div class="columns is-centered">
-            <!-- Wheel -->
-            <div class="column">
-              <div class="content" center="">
-                <h2 class="title is-5 has-text-centered">Room-1</h2>
-              </div>
-            </div>
-      
-            <!-- Wheel -->
-            <div class="column">
-              <div class="content" center="">
-                <h2 class="title is-5 has-text-centered">Room-2</h2>
-              </div>
-            </div>
-          </div>
-        <br/>
+        <h3 class="title is-4">Object Query on the Outdated Offline Map</h3>
+          <img id="teaser" src="./static/images/checkResult.jpg" alt="teaser">
+          <h2 class="subtitle has-text-centered">
+            <span>Multi-granularity Open-vocabulary Retrieval</span>
+          </h2>
+         
         <!--/ Interpolating. -->
 
         <!-- Re-rendering. -->
