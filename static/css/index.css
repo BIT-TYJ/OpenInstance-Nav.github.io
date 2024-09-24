@@ -172,6 +172,11 @@ body {
   text-align: center;
 }
 
+.video-wrapper video {
+  width: 100%;
+  height: auto;
+}
+
 .media-wrapper img {
   width: 100%; 
   display: block; 
